@@ -1,0 +1,145 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.4.5" />
+<title>CHANGELOG for app/spotx-js-instream AnchorSteam v1.2.1</title>
+
+<link type="text/css" href="css/styles.css" rel="stylesheet">
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+/*<![CDATA[*/
+window.onload = function(){generateToc(2)}
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, October 2006. License: GPL */
+
+function getText(el) {
+  var text = "";
+  for (var i = el.firstChild; i != null; i = i.nextSibling) {
+    if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+      text += i.data;
+    else if (i.firstChild != null)
+      text += getText(i);
+  }
+  return text;
+}
+
+function TocEntry(el, text, toclevel) {
+  this.element = el;
+  this.text = text;
+  this.toclevel = toclevel;
+}
+
+function tocEntries(el, toclevels) {
+  var result = new Array;
+  var re = new RegExp('[hH]([2-'+(toclevels+1)+'])');
+  // Function that scans the DOM tree for header elements (the DOM2
+  // nodeIterator API would be a better technique but not supported by all
+  // browsers).
+  var iterate = function (el) {
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+        var mo = re.exec(i.tagName)
+        if (mo)
+          result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+        iterate(i);
+      }
+    }
+  }
+  iterate(el);
+  return result;
+}
+
+// This function does the work. toclevels = 1..4.
+function generateToc(toclevels) {
+  var toc = document.getElementById("toc");
+  var entries = tocEntries(document.getElementsByTagName("body")[0], toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "toc" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    document.getElementById("header").removeChild(toc);
+}
+/*]]>*/
+</script>
+</head>
+<body>
+	
+<header class="navbar navbar-inverse navbar-fixed-top">
+  <a class="logo">&nbsp;</a>
+</header>	
+	
+<div class="container-fluid">
+  <div class="row">    
+    <div class="main col-md-12">
+			<div id="header">
+			  <h1 class="page-header">CHANGELOG for app/spotx-js-instream AnchorSteam v1.2.1</h1>
+			  <span id="revnumber">version (from )</span>				
+				<div id="toc">
+					<h2 class="page-header">Table of Contents</h2>
+					<noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+				</div>
+			</div>
+
+			<h2 id="_new_features">New Features</h2>
+			<div class="sectionbody"></div>
+			<h2 id="_bug_fixes">Bug Fixes</h2>
+			<div class="sectionbody">
+				<div class="ulist">
+					<ul>
+						<li>
+							<p>
+								<a href="https://jira.spotxchange.com/browse/SPTX-7454">SPTX-7454</a>
+								mixpo and innovid ads ghosting fix
+							</p>
+						</li>
+						<li>
+							<p>
+								<a href="https://jira.spotxchange.com/browse/SPTX-7218">SPTX-7218</a>
+								sizmek custom skin fix for iPads
+							</p>
+						</li>
+						<li>
+							<p>
+								<a href="https://jira.spotxchange.com/browse/SPTX-7457">SPTX-7457</a>
+								mobile landscape ads display incorrectly
+							</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<h2 id="_other_changes">Other Changes</h2>
+			<div class="sectionbody"></div>
+			<div id="footer">
+				<div id="footer-text">
+					Version (from )<br />
+					Last updated 2015-02-05 20:27:57 UTC
+				</div>
+			</div>
+	  </div>
+  </div>
+</div>		
+	
